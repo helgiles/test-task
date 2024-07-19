@@ -1,11 +1,29 @@
-const Catalog = () => {
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Loader from '../../components/Loader/Loader';
+import CamperList from '../../components/CamperList/CamperList';
+import { fetchCampers } from '../../redux/operations';
+import { selectLoading } from '../../redux/selectors';
+import { selectError } from '../../redux/selectors';
+import SearchBar from '../../components/SearchBar/SearchBar';
+
+export default function Catalog() {
+	const dispatch = useDispatch();
+
+	const loading = useSelector(selectLoading);
+	const error = useSelector(selectError);
+
+	useEffect(() => {
+		dispatch(fetchCampers());
+	}, [dispatch]);
+
 	return (
 		<>
-			<h1>Catalog</h1>
-			<div>Search Bar</div>
-			<div>CamperList</div>
+			{error && <ErrorMessage />}
+			{loading && <Loader />}
+			<SearchBar />
+			<CamperList />
 		</>
 	);
-};
-
-export default Catalog;
+}

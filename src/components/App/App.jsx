@@ -8,7 +8,7 @@ const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 const Catalog = lazy(() => import('../../pages/Catalog/Catalog.jsx'));
 const Favorites = lazy(() => import('../../pages/Favorites/Favorites.jsx'));
 
-function App() {
+export default function App() {
 	return (
 		<>
 			<Suspense fallback={<Loader />}>
@@ -23,5 +23,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;
