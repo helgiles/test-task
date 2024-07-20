@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import Camper from '../../components/Camper/Camper';
 import { selectFavorites } from '../../redux/selectors';

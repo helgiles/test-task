@@ -36,7 +36,11 @@
 
 .favorite {
 	width: 10px;
-	height: 20px;
+	height: 14px;
+}
+
+.active {
+	background-color: #e44848;
 }
 
 .meta {

@@ -1,12 +1,9 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import CamperModal from '../CamperModal/CamperModal';
 import css from './Camper.module.css';
-import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
-import { selectFavorites } from '../../redux/selectors';
 
 export default function Camper({
 	data: {
-		_id,
 		name,
 		price,
 		rating,
@@ -27,40 +24,10 @@ export default function Camper({
 		reviews,
 	},
 }) {
-	const dispatch = useDispatch();
-	const favorites = useSelector(selectFavorites);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 
-	const isFavorite = favorites.some(fav => fav._id === _id);
-
-	const handleFavoriteClick = () => {
-		if (isFavorite) {
-			dispatch(removeFavorite({ _id }));
-		} else {
-			dispatch(
-				addFavorite({
-					_id,
-					name,
-					price,
-					rating,
-					location,
-					adults,
-					children,
-					engine,
-					transmission,
-					form,
-					length,
-					width,
-					height,
-					tank,
-					consumption,
-					description,
-					details,
-					gallery,
-					reviews,
-				})
-			);
-		}
-	};
+	const openModal = () => setModalIsOpen(true);
+	const closeModal = () => setModalIsOpen(false);
 
 	return (
 		<div className={css.card}>
@@ -72,10 +39,7 @@ export default function Camper({
 					<h2>{name}</h2>{' '}
 					<div>
 						<p>{price}</p>
-						<button
-							className={`${css.favorite} ${isFavorite ? css.active : ''}`}
-							onClick={handleFavoriteClick}
-						></button>
+						<button className={css.favorite}></button>
 					</div>
 				</div>
 				<div className={css.meta}>
@@ -95,17 +59,44 @@ export default function Camper({
 					<div className={css.item}>{details.beds} beds</div>
 					{details.airConditioner !== 0 && <div className={css.item}>AC</div>}
 				</div>
-				<button>Show more</button>
+				<button onClick={openModal}>Show more</button>
 			</div>
+
+			<CamperModal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				data={{
+					name,
+					price,
+					rating,
+					location,
+					adults,
+					children,
+					engine,
+					transmission,
+					form,
+					length,
+					width,
+					height,
+					tank,
+					consumption,
+					description,
+					details,
+				}}
+			/>
 		</div>
 	);
 }
 
 // import React from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 // import css from './Camper.module.css';
+// import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
+// import { selectFavorites } from '../../redux/selectors';
 
 // export default function Camper({
 // 	data: {
+// 		_id,
 // 		name,
 // 		price,
 // 		rating,
@@ -126,6 +117,41 @@ export default function Camper({
 // 		reviews,
 // 	},
 // }) {
+// 	const dispatch = useDispatch();
+// 	const favorites = useSelector(selectFavorites);
+
+// 	const isFavorite = favorites.some(fav => fav._id === _id);
+
+// 	const handleFavoriteClick = () => {
+// 		if (isFavorite) {
+// 			dispatch(removeFavorite({ _id }));
+// 		} else {
+// 			dispatch(
+// 				addFavorite({
+// 					_id,
+// 					name,
+// 					price,
+// 					rating,
+// 					location,
+// 					adults,
+// 					children,
+// 					engine,
+// 					transmission,
+// 					form,
+// 					length,
+// 					width,
+// 					height,
+// 					tank,
+// 					consumption,
+// 					description,
+// 					details,
+// 					gallery,
+// 					reviews,
+// 				})
+// 			);
+// 		}
+// 	};
+
 // 	return (
 // 		<div className={css.card}>
 // 			<div className={css.image}>
@@ -136,7 +162,10 @@ export default function Camper({
 // 					<h2>{name}</h2>{' '}
 // 					<div>
 // 						<p>{price}</p>
-// 						{/* <button className={css.favorite}></button> */}
+// 						<button
+// 							className={`${css.favorite} ${isFavorite ? css.active : ''}`}
+// 							onClick={handleFavoriteClick}
+// 						></button>
 // 					</div>
 // 				</div>
 // 				<div className={css.meta}>
