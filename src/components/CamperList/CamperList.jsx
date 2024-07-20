@@ -7,8 +7,8 @@ export default function CamperList() {
 	const Campers = useSelector(selectCampers);
 
 	return (
-		<>
-			<ul>
+		<div className={css.campers}>
+			<ul className={css.list}>
 				{Campers.map(camper => (
 					<li className={css.item} key={camper.id}>
 						<Camper data={camper} />
@@ -16,6 +16,6 @@ export default function CamperList() {
 				))}
 			</ul>
 			<button>Load more</button>
-		</>
+		</div>
 	);
 }

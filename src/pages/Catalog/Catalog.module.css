@@ -1,0 +1,6 @@
+.catalog {
+	display: flex;
+	flex-direction: row;
+	gap: 64px;
+	align-items: flex-start;
+}

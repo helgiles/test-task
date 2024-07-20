@@ -1,3 +1,4 @@
+import css from './SearchBar.module.css';
 export default function SearchBar() {
-	return <p>SearchBar</p>;
+	return <div className={css.serchbar}>SearchBar</div>;
 }

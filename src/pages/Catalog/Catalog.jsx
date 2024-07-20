@@ -7,6 +7,7 @@ import { fetchCampers } from '../../redux/operations';
 import { selectLoading } from '../../redux/selectors';
 import { selectError } from '../../redux/selectors';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import css from './Catalog.module.css';
 
 export default function Catalog() {
 	const dispatch = useDispatch();
@@ -19,11 +20,11 @@ export default function Catalog() {
 	}, [dispatch]);
 
 	return (
-		<>
+		<div className={css.catalog}>
 			{error && <ErrorMessage />}
 			{loading && <Loader />}
 			<SearchBar />
 			<CamperList />
-		</>
+		</div>
 	);
 }

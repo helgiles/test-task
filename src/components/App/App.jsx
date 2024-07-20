@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import './App.css';
+import css from './App.module.css';
 import Loader from '../Loader/Loader.jsx';
 import Navbar from '../NavBar/NavBar.jsx';
 
@@ -10,7 +10,7 @@ const Favorites = lazy(() => import('../../pages/Favorites/Favorites.jsx'));
 
 export default function App() {
 	return (
-		<>
+		<div className={css.container}>
 			<Suspense fallback={<Loader />}>
 				<Navbar />
 				<Routes>
@@ -20,6 +20,6 @@ export default function App() {
 					<Route path='*' element={<Navigate to='/' />} />
 				</Routes>
 			</Suspense>
-		</>
+		</div>
 	);
 }
