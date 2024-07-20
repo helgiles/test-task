@@ -1,8 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './Camper.module.css';
+import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
+import { selectFavorites } from '../../redux/selectors';
 
 export default function Camper({
 	data: {
+		_id,
 		name,
 		price,
 		rating,
@@ -23,6 +27,41 @@ export default function Camper({
 		reviews,
 	},
 }) {
+	const dispatch = useDispatch();
+	const favorites = useSelector(selectFavorites);
+
+	const isFavorite = favorites.some(fav => fav._id === _id);
+
+	const handleFavoriteClick = () => {
+		if (isFavorite) {
+			dispatch(removeFavorite({ _id }));
+		} else {
+			dispatch(
+				addFavorite({
+					_id,
+					name,
+					price,
+					rating,
+					location,
+					adults,
+					children,
+					engine,
+					transmission,
+					form,
+					length,
+					width,
+					height,
+					tank,
+					consumption,
+					description,
+					details,
+					gallery,
+					reviews,
+				})
+			);
+		}
+	};
+
 	return (
 		<div className={css.card}>
 			<div className={css.image}>
@@ -30,7 +69,14 @@ export default function Camper({
 			</div>
 			<div className={css.info}>
 				<div className={css.header}>
-					<h2>{name}</h2> <p>{price}</p>
+					<h2>{name}</h2>{' '}
+					<div>
+						<p>{price}</p>
+						<button
+							className={`${css.favorite} ${isFavorite ? css.active : ''}`}
+							onClick={handleFavoriteClick}
+						></button>
+					</div>
 				</div>
 				<div className={css.meta}>
 					<p>
@@ -42,15 +88,76 @@ export default function Camper({
 					<p>{description}</p>
 				</div>
 				<div className={css.details}>
-					<div>{adults} adults</div>
-					<div>{transmission}</div>
-					<div>{engine}</div>
-					{details.kitchen !== 0 && <div>Kitchen</div>}
-					<div>{details.beds} beds</div>
-					{details.airConditioner !== 0 && <div>AC</div>}
+					<div className={css.item}>{adults} adults</div>
+					<div className={css.item}>{transmission}</div>
+					<div className={css.item}>{engine}</div>
+					{details.kitchen !== 0 && <div className={css.item}>Kitchen</div>}
+					<div className={css.item}>{details.beds} beds</div>
+					{details.airConditioner !== 0 && <div className={css.item}>AC</div>}
 				</div>
 				<button>Show more</button>
 			</div>
 		</div>
 	);
 }
+
+// import React from 'react';
+// import css from './Camper.module.css';
+
+// export default function Camper({
+// 	data: {
+// 		name,
+// 		price,
+// 		rating,
+// 		location,
+// 		adults,
+// 		children,
+// 		engine,
+// 		transmission,
+// 		form,
+// 		length,
+// 		width,
+// 		height,
+// 		tank,
+// 		consumption,
+// 		description,
+// 		details,
+// 		gallery,
+// 		reviews,
+// 	},
+// }) {
+// 	return (
+// 		<div className={css.card}>
+// 			<div className={css.image}>
+// 				<img src={gallery[0]} alt={name} width='290px' />
+// 			</div>
+// 			<div className={css.info}>
+// 				<div className={css.header}>
+// 					<h2>{name}</h2>{' '}
+// 					<div>
+// 						<p>{price}</p>
+// 						{/* <button className={css.favorite}></button> */}
+// 					</div>
+// 				</div>
+// 				<div className={css.meta}>
+// 					<p>
+// 						{rating} ({reviews.length} Reviews)
+// 					</p>
+// 					<p>{location}</p>
+// 				</div>
+// 				<div className={css.description}>
+// 					<p>{description}</p>
+// 				</div>
+// 				<div className={css.details}>
+// 					<div className={css.item}>{adults} adults</div>
+// 					<div className={css.item}>{transmission}</div>
+// 					<div className={css.item}>{engine}</div>
+// 					{details.kitchen !== 0 && <div className={css.item}>Kitchen</div>}
+// 					<div className={css.item}>{details.beds} beds</div>
+// 					{details.airConditioner !== 0 && <div className={css.item}>AC</div>}
+// 				</div>
+// 				<button>Show more</button>
+// 			</div>
+// 		</div>
+// 	);
+// }

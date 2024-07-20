@@ -13,6 +13,7 @@
 	width: 290px;
 	height: 310px;
 	border-radius: 10px;
+	overflow: hidden;
 }
 .image img {
 	height: 310px;
@@ -33,6 +34,11 @@
 	align-items: center;
 }
 
+.favorite {
+	width: 10px;
+	height: 20px;
+}
+
 .meta {
 	display: flex;
 	justify-content: space-between;
@@ -50,6 +56,11 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
-	margin-top: 16px;
 	text-transform: capitalize;
+}
+
+.item {
+	background-color: #f2f4f7;
+	border-radius: 200px;
+	padding: 12px 18px;
 }
