@@ -34,9 +34,17 @@
 	align-items: center;
 }
 
+.priceFavorite {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	align-items: center;
+}
+
 .favorite {
-	width: 10px;
-	height: 14px;
+	width: 24px;
+	height: 24px;
+	border: none;
 }
 
 .active {

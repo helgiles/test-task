@@ -1,13 +1,12 @@
 .modal {
 	background: white;
-	padding: 20px;
+	padding: 40px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 982px;
-	/* height: 720px; */
-	max-height: 90vh; /* максимальна висота модального вікна */
+	max-height: 90vh;
 	overflow-y: auto;
 	border-radius: 20px;
 	outline: none;
@@ -23,4 +22,70 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.closeBtn {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	background-color: inherit;
+	width: 32px;
+	height: 32px;
+	transition: scale 300ms ease-in-out;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.indexes {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.about {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.gallery {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+}
+
+.image {
+	width: 290px;
+	height: 310px;
+	border-radius: 10px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.image img {
+	height: 310px;
+	object-fit: cover;
+}
+
+.detailedDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 44px;
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CamperModal from '../CamperModal/CamperModal';
 import css from './Camper.module.css';
+import formatPrice from '../../helpers/formatPrice';
 import { addFavorite, removeFavorite } from '../../redux/favoritesSlice';
 import { selectFavorites } from '../../redux/selectors';
 
@@ -75,9 +76,9 @@ export default function Camper({
 			</div>
 			<div className={css.info}>
 				<div className={css.header}>
-					<h2>{name}</h2>{' '}
-					<div>
-						<p>{price}</p>
+					<h2>{name}</h2>
+					<div className={css.priceFavorite}>
+						<p>{formatPrice(price)}</p>
 						<button
 							className={`${css.favorite} ${isFavorite ? css.active : ''}`}
 							onClick={handleFavoriteClick}
@@ -123,6 +124,8 @@ export default function Camper({
 					consumption,
 					description,
 					details,
+					gallery,
+					reviews,
 				}}
 			/>
 		</div>
