@@ -11,6 +11,12 @@
 	gap: 10px;
 }
 
+.item {
+	background-color: #f2f4f7;
+	border-radius: 200px;
+	padding: 12px 18px;
+}
+
 .vehicleDetails table {
 	width: 100%;
 	border-collapse: collapse;

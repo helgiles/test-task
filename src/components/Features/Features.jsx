@@ -4,25 +4,28 @@ export default function Features({ details }) {
 	return (
 		<div className={css.features}>
 			<div className={css.basicDetails}>
-				<p>Adults: {details.adults}</p>
-				<p>Children: {details.children}</p>
-				<p>Engine: {details.engine}</p>
-				<p>Transmission: {details.transmission}</p>
-				<p>Air Conditioner: {details.airConditioner}</p>
-				<p>Bathroom: {details.bathroom}</p>
-				<p>Kitchen: {details.kitchen}</p>
-				<p>Beds: {details.beds}</p>
-				<p>TV: {details.TV}</p>
-				<p>CD: {details.CD}</p>
-				<p>Radio: {details.radio}</p>
-				<p>Shower: {details.shower}</p>
-				<p>Toilet: {details.toilet}</p>
-				<p>Freezer: {details.freezer}</p>
-				<p>Hob: {details.hob}</p>
-				<p>Microwave: {details.microwave}</p>
+				<div className={css.item}>Adults: {details.adults}</div>
+				<div className={css.item}>Children: {details.children}</div>
+				<div className={css.item}>Engine: {details.engine}</div>
+				<div className={css.item}>Transmission: {details.transmission}</div>
+				<div className={css.item}>
+					Air Conditioner: {details.airConditioner}
+				</div>
+				<div className={css.item}>Bathroom: {details.bathroom}</div>
+				<div className={css.item}>Kitchen: {details.kitchen}</div>
+				<div className={css.item}>Beds: {details.beds}</div>
+				<div className={css.item}>TV: {details.TV}</div>
+				<div className={css.item}>CD: {details.CD}</div>
+				<div className={css.item}>Radio: {details.radio}</div>
+				<div className={css.item}>Shower: {details.shower}</div>
+				<div className={css.item}>Toilet: {details.toilet}</div>
+				<div className={css.item}>Freezer: {details.freezer}</div>
+				<div className={css.item}>Hob: {details.hob}</div>
+				<div className={css.item}>Microwave: {details.microwave}</div>
 			</div>
 
 			<div className={css.vehicleDetails}>
+				<h3>Vehicle details</h3>
 				<table>
 					<tbody>
 						<tr>

@@ -43,38 +43,55 @@ export default function OrderForm() {
 
 	return (
 		<form className={css.orderForm} onSubmit={handleSubmit(onSubmit)}>
-			<div className={css.formGroup}>
-				<input id='name' type='text' placeholder='Name' {...register('name')} />
-				{errors.name && <p className={css.error}>{errors.name.message}</p>}
+			<div className={css.header}>
+				<h3>Book your campervan now</h3>
+				<p>Stay connected! We are always ready to help you.</p>
+			</div>
+			<div className={css.formFields}>
+				<div className={css.formGroup}>
+					<input
+						id='name'
+						type='text'
+						placeholder='Name'
+						{...register('name')}
+					/>
+					{errors.name && <p className={css.error}>{errors.name.message}</p>}
+				</div>
+
+				<div className={css.formGroup}>
+					<input
+						id='email'
+						type='email'
+						placeholder='Email'
+						{...register('email')}
+					/>
+					{errors.email && <p className={css.error}>{errors.email.message}</p>}
+				</div>
+
+				<div className={css.formGroup}>
+					<input
+						id='bookingDate'
+						type='date'
+						placeholder='Booking Date'
+						{...register('bookingDate')}
+					/>
+					{errors.bookingDate && (
+						<p className={css.error}>{errors.bookingDate.message}</p>
+					)}
+				</div>
+
+				<div className={css.formGroup}>
+					<textarea
+						id='comment'
+						placeholder='Comment'
+						{...register('comment')}
+					/>
+				</div>
 			</div>
 
-			<div className={css.formGroup}>
-				<input
-					id='email'
-					type='email'
-					placeholder='Email'
-					{...register('email')}
-				/>
-				{errors.email && <p className={css.error}>{errors.email.message}</p>}
-			</div>
-
-			<div className={css.formGroup}>
-				<input
-					id='bookingDate'
-					type='date'
-					placeholder='Booking Date'
-					{...register('bookingDate')}
-				/>
-				{errors.bookingDate && (
-					<p className={css.error}>{errors.bookingDate.message}</p>
-				)}
-			</div>
-
-			<div className={css.formGroup}>
-				<textarea id='comment' placeholder='Comment' {...register('comment')} />
-			</div>
-
-			<button type='submit'>Submit</button>
+			<button className={css.button} type='submit'>
+				Submit
+			</button>
 		</form>
 	);
 }

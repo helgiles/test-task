@@ -76,3 +76,12 @@
 	border-radius: 200px;
 	padding: 12px 18px;
 }
+
+.button {
+	width: 160px;
+	height: 56px;
+	border: none;
+	border-radius: 120px;
+	background-color: #e44848;
+	color: #ffffff;
+}

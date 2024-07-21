@@ -3,31 +3,52 @@
 	height: 532px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 24px;
+	padding: 24px;
+	border: 1px solid #ced0d3;
+	border-radius: 10px;
 }
 
-.formGroup {
+.header {
 	display: flex;
 	flex-direction: column;
+	gap: 8px;
 }
-
-.formGroup label {
-	margin-bottom: 5px;
+.formFields {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
 }
 
 .formGroup input,
 .formGroup textarea {
-	padding: 10px;
-	border: 1px solid #ccc;
+	padding: 18px;
+	border: 1px solid #ced0d3;
 	border-radius: 5px;
+	border-radius: 10px;
+	background-color: #f7f7f7;
+	width: 400px;
+}
+
+.formGroup input {
+	height: 56px;
 }
 
 .formGroup textarea {
+	height: 144px;
 	resize: none;
 }
 
 .error {
-	color: red;
+	color: tomato;
 	font-size: 12px;
-	margin-top: 5px;
+}
+
+.button {
+	width: 160px;
+	height: 56px;
+	border: none;
+	border-radius: 120px;
+	background-color: #e44848;
+	color: #ffffff;
 }

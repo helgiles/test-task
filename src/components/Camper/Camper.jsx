@@ -98,11 +98,13 @@ export default function Camper({
 					<div className={css.item}>{adults} adults</div>
 					<div className={css.item}>{transmission}</div>
 					<div className={css.item}>{engine}</div>
-					{details.kitchen !== 0 && <div className={css.item}>Kitchen</div>}
+					{details.kitchen !== 0 && <div className={css.item}>kitchen</div>}
 					<div className={css.item}>{details.beds} beds</div>
 					{details.airConditioner !== 0 && <div className={css.item}>AC</div>}
 				</div>
-				<button onClick={openModal}>Show more</button>
+				<button className={css.button} onClick={openModal}>
+					Show more
+				</button>
 			</div>
 			<CamperModal
 				isOpen={modalIsOpen}
