@@ -44,28 +44,34 @@ export default function OrderForm() {
 	return (
 		<form className={css.orderForm} onSubmit={handleSubmit(onSubmit)}>
 			<div className={css.formGroup}>
-				<label htmlFor='name'>Name</label>
-				<input id='name' type='text' {...register('name')} />
+				<input id='name' type='text' placeholder='Name' {...register('name')} />
 				{errors.name && <p className={css.error}>{errors.name.message}</p>}
 			</div>
 
 			<div className={css.formGroup}>
-				<label htmlFor='email'>Email</label>
-				<input id='email' type='email' {...register('email')} />
+				<input
+					id='email'
+					type='email'
+					placeholder='Email'
+					{...register('email')}
+				/>
 				{errors.email && <p className={css.error}>{errors.email.message}</p>}
 			</div>
 
 			<div className={css.formGroup}>
-				<label htmlFor='bookingDate'>Booking Date</label>
-				<input id='bookingDate' type='date' {...register('bookingDate')} />
+				<input
+					id='bookingDate'
+					type='date'
+					placeholder='Booking Date'
+					{...register('bookingDate')}
+				/>
 				{errors.bookingDate && (
 					<p className={css.error}>{errors.bookingDate.message}</p>
 				)}
 			</div>
 
 			<div className={css.formGroup}>
-				<label htmlFor='comment'>Comment</label>
-				<textarea id='comment' {...register('comment')} />
+				<textarea id='comment' placeholder='Comment' {...register('comment')} />
 			</div>
 
 			<button type='submit'>Submit</button>

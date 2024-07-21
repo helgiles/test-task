@@ -22,6 +22,10 @@
 	border-radius: 5px;
 }
 
+.formGroup textarea {
+	resize: none;
+}
+
 .error {
 	color: red;
 	font-size: 12px;
