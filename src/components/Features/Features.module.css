@@ -1,0 +1,33 @@
+.features {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.basicDetails {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.vehicleDetails table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.vehicleDetails td {
+	padding: 10px;
+}
+
+.fieldName {
+	font-weight: bold;
+	color: #555;
+	border: none;
+}
+
+.fieldValue {
+	color: #000;
+	border: none;
+	text-align: right;
+}

@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import Modal from 'react-modal';
 import css from './CamperModal.module.css';
 import formatPrice from '../../helpers/formatPrice';
+import Features from '../Features/Features';
+import Reviews from '../Reviews/Reviews';
+import OrderForm from '../OrderForm/OrderForm';
 
 Modal.setAppElement('#root');
 
 export default function CamperModal({ isOpen, onRequestClose, data }) {
+	const [activeTab, setActiveTab] = useState('features');
+
 	const {
 		name,
 		price,
@@ -25,6 +31,10 @@ export default function CamperModal({ isOpen, onRequestClose, data }) {
 		gallery = [],
 		reviews = [],
 	} = data;
+
+	const handleTabClick = tab => {
+		setActiveTab(tab);
+	};
 
 	return (
 		<Modal
@@ -62,35 +72,46 @@ export default function CamperModal({ isOpen, onRequestClose, data }) {
 					<div className={css.detailedDescription}>
 						<p>{description}</p>
 
-						<div>
-							<p>{location}</p>
-							<p>Adults: {adults}</p>
-							<p>Children: {children}</p>
-							<p>Engine: {engine}</p>
-							<p>Transmission: {transmission}</p>
-							<p>Form: {form}</p>
-							<p>Length: {length}</p>
-							<p>Width: {width}</p>
-							<p>Height: {height}</p>
-							<p>Tank: {tank}</p>
-							<p>Consumption: {consumption}</p>
+						<div className={css.detailsForm}>
+							<ul className={css.detailsKey}>
+								<li
+									className={activeTab === 'features' ? css.active : ''}
+									onClick={() => handleTabClick('features')}
+								>
+									Features
+								</li>
+								<li
+									className={activeTab === 'reviews' ? css.active : ''}
+									onClick={() => handleTabClick('reviews')}
+								>
+									Reviews
+								</li>
+							</ul>
 
-							<div>
-								<h3>Details:</h3>
-								<p>Air Conditioner: {details.airConditioner}</p>
-								<p>Bathroom: {details.bathroom}</p>
-								<p>Kitchen: {details.kitchen}</p>
-								<p>Beds: {details.beds}</p>
-								<p>TV: {details.TV}</p>
-								<p>CD: {details.CD}</p>
-								<p>Radio: {details.radio}</p>
-								<p>Shower: {details.shower}</p>
-								<p>Toilet: {details.toilet}</p>
-								<p>Freezer: {details.freezer}</p>
-								<p>Hob: {details.hob}</p>
-								<p>Microwave: {details.microwave}</p>
-								<p>Gas: {details.gas}</p>
-								<p>Water: {details.water}</p>
+							<div className={css.detailsOrder}>
+								<div className={css.details}>
+									{activeTab === 'features' ? (
+										<Features
+											details={{
+												...details,
+												adults,
+												children,
+												engine,
+												transmission,
+												form,
+												length,
+												width,
+												height,
+												tank,
+												consumption,
+											}}
+										/>
+									) : (
+										<Reviews reviews={reviews} />
+									)}
+								</div>
+
+								<OrderForm />
 							</div>
 						</div>
 					</div>
